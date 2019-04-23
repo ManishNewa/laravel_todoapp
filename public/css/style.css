@@ -1,0 +1,13 @@
+table{
+  width: 400 !important ;
+  /* table-layout: fixed; */
+}
+
+table td,
+table th{
+  overflow:hidden
+}
+
+.bg-background{
+  background-color: rgb(0, 0, 0);
+}

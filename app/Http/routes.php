@@ -13,5 +13,12 @@
 
 Route::get('/', 'TodoController@index');
 
-Route::get('/posttodo','TodoController@create')
+Route::post('/posttodo','TodoController@store');
 
+Route::get('/edittodo/{id}','TodoController@edit');
+
+Route::get('/updatetodo/{id}','TodoController@update');
+
+Route::get('/deletetodo/{id}','TodoController@destroy');
+
+Route::get('/completedtodo/{id}','TodoController@completedTodo');
