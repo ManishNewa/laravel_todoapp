@@ -50,7 +50,7 @@ class TodoController extends Controller
         
         $notification = array(
 
-            'message' => 'Todo list updated',
+            'message' => 'Todo list updated. You can recheck again after you have updated the list',
             'alert-type' =>'info'
 
         );
