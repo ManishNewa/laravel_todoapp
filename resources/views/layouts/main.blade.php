@@ -18,11 +18,11 @@
 
     <title>@yield('main_title')</title>
   </head>
-  <body>
+  <body id="main-body">
 
     <div class="container-fluid">
 
-        <div class="row bg-primary" style="height:100vh">
+        <div class="row main-body" style="height:100vh">
        
             @yield('main_content')
 
