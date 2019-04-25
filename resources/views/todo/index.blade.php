@@ -7,7 +7,7 @@
 @section('main_content')
 <div class="container-fluid">
 
-    <h1 class="font-weight-bold text-center mt-5 mb-5 text-light">Todo List Application</h1>
+    <h1 class="font-weight-bold text-center mt-5 mb-5 text-light">Todo Lists</h1>
 
     <div class="row">
         <div class="col-4 mt-5"> 
@@ -31,38 +31,52 @@
             <h3 class="col-sm-12 text-center text-light">Tasks Available </h3>
             <table class="table table-stripe table-dark">
                 <thead>
+
                     <tr>
+                    
                         <th scope="col">Tasks</th>
-                        <th class="text-center">Actions</th>
+                        <th>Actions</th>                      
+                        <th>Checkout</th>
                         <th class="text-center">Delete</th>
-                        <th>Status</th>
+                        <th>Status</th>  
+                    
                     </tr>
+                
                 </thead>
+                
                 <tbody>
+                
                 @foreach($todos as $todo)   
                     <tr>
+                
                         <td scope="col">
                             <h5 class=" text-light">{{str_limit($todo->todo , $limit=40 , $end="...")}}</h5>
                         </td>
-                        <td class="row">
-
-                            <div class="col-4">
-                                <a class="btn btn-light" href="/edittodo/{{$todo->id}}">Update</a>
-                            </div>   
-                            <div class="col-2">
-                                
-                            </div>    
-                            <div class="col-4">
-                                @if(!$todo->completed) 
-                                <a href="/completedtodo/{{$todo->id}}"><i class="fas fa-clipboard-check fa-2x text-success"></i></a> 
-                                @endif
-                            </div>   
-
-                            
-                           
-                        </td>
+                
                         <td>
-                            <a href="/deletetodo/{{$todo->id}}" onclick="return confirm('Are you sure?')"><i class="far fa-trash-alt fa-2x text-danger ml-3"></i></a>     
+
+                                <a class="btn btn-light" href="/edittodo/{{$todo->id}}">Update</a>
+
+                        </td>
+
+                        <td>
+
+                            @if(!$todo->completed) 
+
+                                <a href="/completedtodo/{{$todo->id}}"><i class="fas fa-clipboard-check fa-2x text-success ml-3"></i></a> 
+
+                            @else
+
+                                Completed
+                            
+                            @endif
+                       
+                        </td>
+
+                        <td>
+
+                            <a href="/deletetodo/{{$todo->id}}" onclick="return confirm('Are you sure?')"><i class="far fa-trash-alt fa-2x text-danger mx-auto"></i></a>     
+
                         </td>
                         
                         <td>
@@ -77,12 +91,12 @@
                     </tr>
                 @endforeach
                     <tr>
-                        <td colspan="">
-                            <span class="ml-auto">Previous</span>
+                        <td class="text-center">
+                            <a class="btn btn-primary ml-auto">Previous</a>
                         </td>
-                        <td></td>
-                        <td>
-                            <span class="mr-auto">Next</span>
+                        <td colspan="2"></td>
+                        <td class="text-center">
+                            <a class="btn btn-primary mr-auto">Next</a>
                         </td>
                     </tr>
                 </tbody>
