@@ -75,7 +75,7 @@
 
                         <td>
 
-                            <a href="/deletetodo/{{$todo->id}}" onclick="return confirm('Are you sure?')"><i class="far fa-trash-alt fa-2x text-danger mx-auto"></i></a>     
+                            <a href="#" data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt fa-2x text-danger mx-auto"></i></a>     
 
                         </td>
                         
@@ -103,6 +103,28 @@
             </table>
         </div>
     </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Delete the given task from the database
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary text-light" href="/deletetodo/{{$todo->id}}">Yes</a>
+        <a class="btn btn-secondary text-light" data-dismiss="modal">No</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 @endsection
