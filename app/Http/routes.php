@@ -11,14 +11,63 @@
 |
 */
 
-Route::get('/', 'TodoController@index');
+Route::get('/', [
 
-Route::post('/posttodo','TodoController@store');
+	'uses' => 'TodoController@index',
+	'as' => 'todo'
 
-Route::get('/edittodo/{id}','TodoController@edit');
+]);
 
-Route::get('/updatetodo/{id}','TodoController@update');
+Route::get('/todo', [
 
-Route::get('/deletetodo/{id}','TodoController@destroy');
+	'uses' => 'TodoController@index',
+	'as' => 'todo1'
 
-Route::get('/completedtodo/{id}','TodoController@completedTodo');
+]);
+
+Route::post('/todo/create',[
+
+	'uses' => 'TodoController@store',
+	'as' => 'todo.create'
+
+]);
+
+Route::get('/todo/edit/{id}',[
+
+	'uses' => 'TodoController@edit',
+	'as' => 'todo.edit'
+	
+]);
+
+Route::get('/todo/update/{id}',[
+
+	'uses' => 'TodoController@update',
+	'as' => 'todo.update'
+	
+]);
+
+Route::get('/todo/delete/{id}',[
+
+	'uses' => 'TodoController@destroy',
+	'as' => 'todo.delete'
+	
+]);
+
+Route::get('/todo/complete/{id}',[
+
+	'uses' => 'TodoController@complete',
+	'as' => 'todo.complete'
+	
+]);
+
+
+
+// Route::post('/posttodo','TodoController@store');
+
+// Route::get('/edittodo/{id}','TodoController@edit');
+
+// Route::get('/updatetodo/{id}','TodoController@update');
+
+// Route::get('/deletetodo/{id}','TodoController@destroy');
+
+// Route::get('/completedtodo/{id}','TodoController@completedTodo');
