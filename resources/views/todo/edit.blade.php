@@ -8,7 +8,7 @@
 
 <div class="mx-auto">
     <h1 class="col-md-12 font-weight-bold  text-light text-center mt-5 mb-5">Update Todo </h1>
-    <form action="/updatetodo/{{$todo->id}}" method="get">
+    <form action="{{ route('todo.update', $todo->id) }}" method="get">
         <div class="row">
             <div class="form-group col-md-12 text-center">
                 <textarea name="todo" cols="70" rows="4">{{$todo->todo}}</textarea>

@@ -46,7 +46,7 @@ Route::get('/todo/update/{id}',[
 	
 ]);
 
-Route::get('/todo/delete/{id}',[
+Route::get('/todo/delete',[
 
 	'uses' => 'TodoController@destroy',
 	'as' => 'todo.delete'

@@ -73,7 +73,7 @@ class TodoController extends Controller
 
     }
 
-    public function completedTodo($id){
+    public function complete($id){
 
         $todo = Todo::findOrFail($id);        
        

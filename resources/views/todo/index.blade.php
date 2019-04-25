@@ -14,7 +14,7 @@
         <div class="mt-5"></div>
         <div class="mt-5"></div>       
         <h4 class="font-weight-bold text-center text-light mr-5">Add a task</h4>
-            <form action="/posttodo" method="POST">
+            <form action="{{ route('todo.create') }}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row"> 
                     <div class="col-10">
@@ -50,12 +50,14 @@
                     <tr>
                 
                         <td scope="col">
+
                             <h5 class=" text-light">{{str_limit($todo->todo , $limit=40 , $end="...")}}</h5>
+
                         </td>
                 
                         <td>
 
-                                <a class="btn btn-light" href="/edittodo/{{$todo->id}}">Update</a>
+                                <a class="btn btn-light" href="{{ route('todo.edit', $todo->id) }}">Update</a>
 
                         </td>
 
@@ -63,7 +65,7 @@
 
                             @if(!$todo->completed) 
 
-                                <a href="/completedtodo/{{$todo->id}}"><i class="fas fa-clipboard-check fa-2x text-success ml-3"></i></a> 
+                                <a href="{{ route('todo.complete', $todo->id) }}"><i class="fas fa-clipboard-check fa-2x text-success ml-3"></i></a> 
 
                             @else
 
@@ -75,7 +77,7 @@
 
                         <td>
 
-                            <a href="#" data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt fa-2x text-danger mx-auto"></i></a>     
+                            <a href="#" data-toggle="modal" data-target="#deleteModal_{{$todo->id}}"><i class="far fa-trash-alt fa-2x text-danger mx-auto"></i></a>     
 
                         </td>
                         
@@ -107,7 +109,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal_{{$id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -120,7 +122,7 @@
         Delete the given task from the database
       </div>
       <div class="modal-footer">
-        <a class="btn btn-primary text-light" href="/deletetodo/{{$todo->id}}">Yes</a>
+        <a class="btn btn-primary text-light" href="{{ route('todo.delete', $id) }}">Yes</a>
         <a class="btn btn-secondary text-light" data-dismiss="modal">No</a>
       </div>
     </div>
